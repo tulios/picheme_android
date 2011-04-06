@@ -1,6 +1,5 @@
 package br.picheme.activities;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,13 +20,13 @@ public class MurosList extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		InputStream inputStream = MuroService.getFeed("");
-		MuroXmlHandler muroXmlHandler = FeedParser.parse(MuroXmlHandler.class, inputStream);
+
+		MuroService service = new MuroService(getString(R.string.host), "");
+		MuroXmlHandler muroXmlHandler = FeedParser.parse(MuroXmlHandler.class, service.getFeed());
 		
 		List<Pichacao> pichacoes = muroXmlHandler.getPichacoes();
 		if (pichacoes != null) {
-			Log.i(TAG, "quantidade de pichacoes: " + pichacoes.size());
+			Log.d(TAG, "quantidade de pichacoes: " + pichacoes.size());
 		}
 		
 		List<String> stringList = new ArrayList<String>();
@@ -37,6 +36,8 @@ public class MurosList extends ListActivity {
 		
 		ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this, R.layout.list_item, stringList);
 		setListAdapter(listAdapter);
+		
+		getListView().setTextFilterEnabled(true);
 	}
 
 }

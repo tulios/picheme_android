@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, MurosList!</string>
     <string name="app_name">picheme</string>
+    <string name="host">http://192.168.1.103:3000</string>
 </resources>
