@@ -13,9 +13,9 @@ import br.picheme.services.MuroService;
 import br.picheme.util.FeedParser;
 import br.picheme.util.MuroXmlHandler;
 
-public class MurosList extends ListActivity {
+public class MurosListActivity extends ListActivity {
 
-	public static final String TAG = MurosList.class.getName();
+	public static final String TAG = MurosListActivity.class.getName();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
